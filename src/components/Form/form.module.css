@@ -1,0 +1,47 @@
+.input {
+    font-size: 16px;
+    padding: 15px 10px;
+    min-width: 200px;
+    text-shadow: 1px 1px 2px blueviolet;
+    border-radius: 8px;
+    border: none;
+    background-color: inherit;
+    background: rgba(179, 115, 217, 0.6)
+}
+
+label {
+    color: rgb(76, 73, 73);
+    font-size: 18px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.p {
+    color: rgb(42, 37, 37);
+    font-size: 18px;
+}
+.infoForUser {
+    color: rgb(42, 37, 37);
+    font-size: 24px;
+}
+/*-----------------ADAPTIVE LAYOUT--------------*/
+@media screen and (min-width: 728px) {
+    .p,
+    .infoForUser {
+        font-size: 24px;
+    }
+    form {
+        gap: 15px;
+    }
+    label {
+        font-size: 22px;
+    }
+    .input {
+        font-size: 22px;
+        padding: 20px 10px;
+    }
+}
