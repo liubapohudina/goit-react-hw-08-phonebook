@@ -1,8 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import { lazy } from "react";
 import  SharedLayout  from "./SharedLayout/SharedLayout";
-import RegisterForm from "./RegisterForm/RegisterForm";
-import LoginForm from "./LoginForm/LoginForm";
+import RegisterForm from "../Pages/RegisterForm/RegisterForm";
+import LoginForm from "../Pages/LoginForm/LoginForm";
+import Home from "Pages/Home/Home";
 
 const PhonebookList = lazy(() => import('../Pages/PhonebookList/PhonebookList'));
 const NotFoundPage = lazy(() => import('../Pages/NotFoundPage/NotfoundPage'));
@@ -14,6 +15,7 @@ export function AppRoutes() {
         <>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
+                    <Route index element={<Home/>} />
                     <Route path="/login" element={<LoginForm/>}></Route>
                     <Route path="/register" element={<RegisterForm/>}></Route>
                     <Route path="/contacts" element={<PhonebookList/>}></Route>
