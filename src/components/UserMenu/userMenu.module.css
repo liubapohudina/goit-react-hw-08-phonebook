@@ -1,0 +1,10 @@
+.boxUser {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 3px;
+}
+
+button .btnLogOut {
+    height: 50px;
+}

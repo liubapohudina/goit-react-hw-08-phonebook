@@ -18,6 +18,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .container {
   margin-top: 30px;
   min-width: 320px;
@@ -31,6 +32,7 @@ img {
   height: auto;
 }
 
+
 .App {
   text-align: center;
   display: flex;
@@ -38,9 +40,7 @@ img {
   justify-content: center;
   align-items: center;
 }
-section {
-  margin-bottom: 40px;
-}
+
 
 /*------------------ADAPTIVE LAYOUT-----------------*/
 @media screen and (min-width: 427px) {
