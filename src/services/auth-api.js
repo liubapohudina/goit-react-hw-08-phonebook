@@ -12,12 +12,12 @@ const authInstatance = axios.create({
 })
 
 export const signupRequest = async body => {
-    const { data } = await authInstatance.post('users/signup', body);
+    const { data } = await authInstatance.post(`${ENDPOINT.userSign}`, body);
     return data;
 } 
 
 export const loginRequest = async body => {
-    const { data } = await authInstatance.post(`users/login`, body);
+    const { data } = await authInstatance.post(`${ENDPOINT.userLog}`, body);
     return data;
 }
 
