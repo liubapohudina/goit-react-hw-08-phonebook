@@ -16,13 +16,12 @@ export function AppRoutes() {
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<LoginFormPage/>} />
-                    <Route path="/login" element={<LoginFormPage/>}></Route>
-                    <Route path="/register" element={<RegisterFormPage/>}></Route>
-                    <Route path="/contacts" element={<PhonebookList/>}></Route>
-                    <Route path="*" element={<NotFoundPage/>}></Route>
-                </Route>    
+                    <Route path="login" element={<LoginFormPage/>}/>
+                    <Route path="register" element={<RegisterFormPage/>}/>
+                    <Route path="contacts" element={<PhonebookList />} />
+                </Route> 
+                <Route path="*" element={<NotFoundPage/>}></Route>
             </Routes>
-            
         </>
-    )
+    );
 }

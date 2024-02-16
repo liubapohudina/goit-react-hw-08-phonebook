@@ -1,31 +1,15 @@
-import { NavLink } from 'react-router-dom';
+
 import styles from './navigation.module.css'; 
 import UserMenu from '../UserMenu/UserMenu';
+import Navbar from './Navbar/Navbar';
+import { isLogin } from '../../redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
 
 const Navigation = () => {
-    const isLogin = true;
- 
-
+    const loginIs = useSelector(isLogin);
     return (
         <nav className={styles.navList}>
-            {isLogin && <NavLink className={styles.link} to='/contacts'>
-                <div className={styles.linkContainer}>
-                    <span className={styles.linkText}>Contacts</span>
-                </div>
-            </NavLink>}
-           
-            {isLogin ? <UserMenu /> : (
-                <><NavLink className={styles.link} to='/login'>
-                <div className={styles.linkContainer}>
-                    <span className={styles.linkText}>Log in</span>
-                </div>
-            </NavLink>
-            <NavLink className={styles.link} to='/register'>
-                <div className={styles.linkContainer}>
-                    <span className={styles.linkText}>Register</span>
-                </div>
-                    </NavLink>
-                </>)} 
+            {loginIs ? <UserMenu/> : <Navbar/>} 
         </nav>
     );
 };
