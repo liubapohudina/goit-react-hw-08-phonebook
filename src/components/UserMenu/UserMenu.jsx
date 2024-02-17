@@ -4,11 +4,11 @@ import { userInfo } from '../../redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 
 const UserMenu = () => {
-    const {name} = useSelector(userInfo)
+    const {email} = useSelector(userInfo)
     return (
             <div className={styles.boxUser}>
-            <p>{name}</p> 
-            <Button className={styles.btnLogOut} text="Log out" type='button'/>
+            <p>{email}</p> 
+            <Button className={styles.btnLogOut} text="Log out"  type='button'/>
         </div>
     )
 }

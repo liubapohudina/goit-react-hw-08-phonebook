@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 3px;
+    min-width: 100%;
 }
 
-button .btnLogOut {
-    height: 50px;
+.btnLogOut {
+    width: 100px;
 }

@@ -20,7 +20,9 @@ const LoginFormPage = () => {
 
     if (loginIs) {
         return <Navigate to='/contacts'/>
-    }
+    } 
+
+
     return (
         <main className="container">
         <Title title="Please Log in"/>

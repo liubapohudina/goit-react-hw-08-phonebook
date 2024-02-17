@@ -1,12 +1,13 @@
 import React from "react";
 import styles from './button.module.css';
-import PropTypes  from "prop-types";
+import PropTypes from "prop-types";
+import classNames from 'classnames';
 
 
 
-const Button = ({text, type, onClickSubmit}) => {
+const Button = ({text, type, className, onClickSubmit}) => {
     return (
-        <><button className={styles.btn} onSubmit={onClickSubmit} type={type}>{text}</button></>
+        <><button className={classNames(styles.btn, className)} onSubmit={onClickSubmit} type={type}>{text}</button></>
     )
 }
 
