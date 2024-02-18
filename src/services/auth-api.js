@@ -31,3 +31,9 @@ export const currentRequest = async token => {
         throw error;
     }
 }
+
+export const logoutRequest = async token => {
+    authInstatance.defaults.headers.authorization = `Bearer ${token}`;
+    const { data } = authInstatance.post(`${ENDPOINT.userLogOut}`);
+    return data;
+}

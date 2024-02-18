@@ -5,9 +5,9 @@ import classNames from 'classnames';
 
 
 
-const Button = ({text, type, className, onClickSubmit}) => {
+const Button = ({text, type, className, onClickLogout, onClickSubmit}) => {
     return (
-        <><button className={classNames(styles.btn, className)} onSubmit={onClickSubmit} type={type}>{text}</button></>
+        <><button className={classNames(styles.btn, className)} onSubmit={onClickSubmit} onClick={onClickLogout} type={type}>{text}</button></>
     )
 }
 
