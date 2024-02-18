@@ -12,10 +12,12 @@ const PrivateRoutes = () => {
   }
 
   if (!isShowPhoneList && !tokenIs) {
-    return <Navigate to='/login'/>
-    }
+    return <Navigate to='/login' />;
+  }
     
-    return <Outlet />
+  return <Outlet />;
 }
 
 export default PrivateRoutes;
+
+
