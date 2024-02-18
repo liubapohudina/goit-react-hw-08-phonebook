@@ -21,3 +21,13 @@ export const loginRequest = async body => {
     return data;
 }
 
+export const currentRequest = async token => {
+    authInstatance.defaults.headers.authorization = `Bearer ${token}`;
+    try {
+        const { data } = await authInstatance.get(`${ENDPOINT.userCurrent}`)
+        return data;
+    } catch (error) {
+        authInstatance.defaults.headers.authorization = '';
+        throw error;
+    }
+}
