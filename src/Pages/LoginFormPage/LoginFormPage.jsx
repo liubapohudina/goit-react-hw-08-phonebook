@@ -3,8 +3,8 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import { Loader } from "../../components/Form/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/auth-operations";
-import { isLogin, loading  } from "../../redux/auth/auth-selectors";
-import { Navigate } from "react-router-dom";
+import {  loading  } from "../../redux/auth/auth-selectors";
+// import { Navigate } from "react-router-dom";
 
 const LoginFormPage = () => {
     
@@ -15,12 +15,12 @@ const LoginFormPage = () => {
     }
     
     const isLoading = useSelector(loading)
-    const loginIs = useSelector(isLogin)
+    // const loginIs = useSelector(isLogin)
    
 
-    if (loginIs) {
-        return <Navigate to='/contacts'/>
-    } 
+    // if (loginIs) {
+    //     return <Navigate to='/contacts'/>
+    // } 
 
 
     return (

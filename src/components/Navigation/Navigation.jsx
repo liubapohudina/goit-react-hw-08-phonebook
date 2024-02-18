@@ -6,8 +6,11 @@ import { isLogin } from '../../redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 
 const Navigation = () => {
-    const loginIs = useSelector(isLogin);
-    return (
+
+  const loginIs = useSelector(isLogin);
+
+    
+      return (
         <nav className={styles.navList}>
             {loginIs ? <UserMenu/> : <Navbar/>} 
         </nav>

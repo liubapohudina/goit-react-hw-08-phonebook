@@ -3,18 +3,18 @@ import Title from "../../components/Form/Title";
 
 import ContactList from "../../components/Form/ContacsList";
 import Filter from "../../components/Form/FilterSearch";
-import { isLogin } from '../../redux/auth/auth-selectors';
-import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+// import { isLogin } from '../../redux/auth/auth-selectors';
+// import { useSelector } from 'react-redux';
+// import { Navigate } from 'react-router-dom';
 
 
 
 const PhonebookList = () => {
-
-  const isShowPhoneList = useSelector(isLogin);
-  if (!isShowPhoneList) {
-    return <Navigate to='/login'/>
-  }
+  
+//   const isShowPhoneList = useSelector(isLogin);
+// if (!isShowPhoneList) {
+//   return <Navigate to='/login'/>
+//   }
   
 
   return (
