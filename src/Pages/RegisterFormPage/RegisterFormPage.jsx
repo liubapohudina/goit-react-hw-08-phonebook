@@ -3,8 +3,8 @@ import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { Loader } from "../../components/Form/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/auth/auth-operations";
-import { loading  } from "../../redux/auth/auth-selectors";
-// import { Navigate } from "react-router-dom";
+import { isLogin, loading  } from "../../redux/auth/auth-selectors";
+import { Navigate } from "react-router-dom";
 
 const RegisterFormPage = () => {
 
@@ -15,12 +15,12 @@ const RegisterFormPage = () => {
     }
     
     const isLoading = useSelector(loading)
-    // const loginIs = useSelector(isLogin)
+    const loginIs = useSelector(isLogin)
    
 
-    // if (loginIs) {
-    //     return <Navigate to='/contacts'/>
-    // }
+    if (loginIs) {
+        return <Navigate to='/contacts'/>
+    }
 
     return (
         <main className="container">

@@ -11,8 +11,8 @@ export const fetchContacts = createAsyncThunk(
             return data;
         }
         catch (error) {
-            toast.error(`${error.message}`)
-            return thunkApi.rejectWithValue(error.message);
+            toast.error(`${error.response.data.message}`)
+            return thunkApi.rejectWithValue(error.response.data.message);
         }
     }
 )
@@ -26,8 +26,8 @@ export const fetchAddContacts = createAsyncThunk(
             return data;
         }
         catch (error) {
-            toast.error(`${error.message}`)
-            return thunkApi.rejectWithValue(error.message);
+            toast.error(`${error.response.data.message}`)
+            return thunkApi.rejectWithValue(error.response.data.message);
         }
     }
 )
@@ -41,8 +41,8 @@ export const fetchDeleteContacts = createAsyncThunk(
             return data;
             
         } catch (error) {
-            toast.error(`${error.message}`)
-            return thunkApi.rejectWithValue(error.message);
+            toast.error(`${error.response.data.message}`)
+            return thunkApi.rejectWithValue(error.response.data.message);
         }
 
     }
