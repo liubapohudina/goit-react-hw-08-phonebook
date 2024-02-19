@@ -6,11 +6,10 @@ import { Loader } from "../../components/Form/Loader";
 const PrivateRoutes = () => {
   const tokenIs = useSelector(isToken);
   const isShowPhoneList = useSelector(isLogin);
-
+  
   if (!isShowPhoneList && tokenIs) {
     return <Loader/>
   }
-
   if (!isShowPhoneList && !tokenIs) {
     return <Navigate to='/login' />;
   }

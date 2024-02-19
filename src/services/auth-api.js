@@ -28,7 +28,7 @@ export const loginRequest = async body => {
     return data;
 }
 
-export const currentRequest = async (token) => {
+export const currentRequest = async token => {
     setToken(token);
     try {
         const {data} = await axios.get(`${ENDPOINT.userCurrent}`);
