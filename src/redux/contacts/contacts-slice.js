@@ -86,9 +86,12 @@ const contactsSlice = createSlice({
             /*----------------FOR EDIT CONTACT-------------------------*/
             .addCase(fetchEditContact.pending, (state) => { state.isLoading = true })
             .addCase(fetchEditContact.fulfilled, (state, { payload }) => {
-                state.items = [...state.items, payload];
-                state.isLoading = false;
-                state.error = null;
+            const index = state.items.findIndex(contact => contact.id === payload.id);
+                if (index !== -1) {
+            state.items[index] = payload; 
+            }
+            state.isLoading = false;
+            state.error = null;
             })
             .addCase(fetchEditContact.rejected, (state, { payload }) => {
             state.isLoading = false;

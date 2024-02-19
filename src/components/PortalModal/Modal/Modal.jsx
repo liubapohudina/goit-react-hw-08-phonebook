@@ -35,12 +35,12 @@ const Modal = ({ onClose, currentId }) => {
   };
 
   const onSubmitForm = (e, id) => {
-    e.preventDefault();
     const contact = {
     name: formData.name,
     number: formData.number
   };
     dispatch(fetchEditContact({ id: id, contact: contact }));
+    e.preventDefault();
 
   };
 

@@ -51,13 +51,11 @@ export const fetchDeleteContacts = createAsyncThunk(
 export const fetchEditContact = createAsyncThunk(
     'contacts/edit',
     async ({ id, contact }, { rejectWithValue }) => {
-        console.log(id, contact, rejectWithValue)
         try {
             const data = await contactsApi.requestEditContact(id, contact);
             toast.info(`The contact ${data.name} was edited!`);
             return data;
         } catch (error) {
-            console.log(error)
             toast.error(`${error.response.data.message}`)
             return rejectWithValue(error.response.data.message);
         }
