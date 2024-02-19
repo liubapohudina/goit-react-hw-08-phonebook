@@ -41,11 +41,23 @@ const Modal = ({ onClose, currentId }) => {
   };
     dispatch(fetchEditContact({ id: id, contact: contact }));
     e.preventDefault();
+    onClose();
+  };
+ 
+const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      onClose(); 
+    }
+  };
 
+   const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose(); 
+    }
   };
 
   return (
-    <div className={styles.backdrop}>
+    <div className={styles.backdrop} onClick={handleBackdropClick} onKeyDown={handleKeyDown}>
       <div className={styles.modal}>
         <form className={styles.form} onSubmit={(e) => onSubmitForm(e, formData.id)}>
           <label htmlFor="name">Name</label>
