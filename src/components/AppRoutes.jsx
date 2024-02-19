@@ -9,7 +9,6 @@ const PhonebookList = lazy(() => import('../Pages/PhonebookList/PhonebookList'))
 const NotFoundPage = lazy(() => import('../Pages/NotFoundPage/NotfoundPage'));
 const RegisterFormPage = lazy(() => import('../Pages/RegisterFormPage/RegisterFormPage'));
 const LoginFormPage = lazy(() => import('../Pages/LoginFormPage/LoginFormPage'));
- 
 
 
 export function AppRoutes() {
@@ -23,7 +22,7 @@ export function AppRoutes() {
                     <Route path="login" element={<LoginFormPage />} />
                 </Route>
                 <Route element={<PrivateRoutes />}>
-                        <Route path="contacts" element={<PhonebookList/>} />
+                        <Route path="contacts" element={<PhonebookList />} />
                 </Route>      
                 </Route> 
                 <Route path="*" element={<NotFoundPage/>}></Route>

@@ -27,6 +27,10 @@ export const requestDeleteContact = async id => {
     return data;
 }
 
+export const requestEditContact = async (id, contact ) => {
+    const { data } = await axios.patch(`${ENDPOINT}/${id}`, contact);
+    return data;
+}
 
 
 
