@@ -81,12 +81,19 @@
     width: 100%;
     transition: 800ms ease all;
 }
+.btns {
+    display: flex;
+    gap: 10px;
+}
 /*----------------ADAPTIVE LAYOUT------------*/
 @media screen and (min-width: 728px) {
     .btn,
     .contactInfo {
         font-size: 22px;
         padding: 20px 15px;
+    }
+    .btns {
+        gap: 27px;
     }    
 } 
     

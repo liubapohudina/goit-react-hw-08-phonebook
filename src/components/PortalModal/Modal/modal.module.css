@@ -29,8 +29,8 @@
         border-radius: 12px;
         position: absolute;
         width: 250px;
-        top: 20%;
-        left: calc(50% - 125px);
+        top: 30%;
+        left: calc(50% - 180px);
         bottom: 30%;
         min-width: 300px;
 }
@@ -104,8 +104,4 @@ form {
         padding: 20px 10px;
     }
 }
-@media screen and (max-width: 460px) {
-    .modal {
-        left: 0;
-    }
-}
+

@@ -41,16 +41,20 @@ const elements = items ? (
     items.map(item => (
       <li className={styles.itemContacts} key={item.id}>
         <p className={styles.contactInfo}>{item.name} <a className={styles.link} href={`tel:${item.number}`}>{item.number}</a></p>
-        <button id={item.id} className={styles.btn} onClick={() => onClickDelete(item.id)} type="button">Delete</button>
-        <button id={item.id} className={styles.btn} onClick={() => openModal(item.id)} type="button">Edit</button>
+        <div className={styles.btns}>
+          <button id={item.id} className={styles.btn} onClick={() => onClickDelete(item.id)} type="button">Delete</button>
+          <button id={item.id} className={styles.btn} onClick={() => openModal(item.id)} type="button">Edit</button>
+        </div> 
   </li>
     ))
 ) : (
     filteredContacts.map(item => (
         <li className={styles.itemContacts} key={item.id}>
-            <p className={styles.contactInfo}>{item.name}  {item.number}</p>
-        <button id={item.id} className={styles.btn} onClick={() => onClickDelete(item.id)} type="button">Delete</button>
-        <button id={item.id} className={styles.btn} onClick={() => openModal(item.id)} type="button">Edit</button>
+        <p className={styles.contactInfo}>{item.name}  {item.number}</p>
+        <div className={styles.btns}>
+          <button id={item.id} className={styles.btn} onClick={() => onClickDelete(item.id)} type="button">Delete</button>
+          <button id={item.id} className={styles.btn} onClick={() => openModal(item.id)} type="button">Edit</button>
+        </div>  
         </li>
     ))
 );
