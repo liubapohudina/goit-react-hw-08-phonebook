@@ -25,8 +25,8 @@ export function AppRoutes({ isAuthenticated }) {
                     <Route element={<PrivateRoutes />}>
                         <Route path="contacts" element={<PhonebookList />} />
                     </Route>
+                    <Route path="*" element={<NotFoundPage />} />
                 </Route>
-                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </>
     );

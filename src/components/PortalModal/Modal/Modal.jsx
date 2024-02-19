@@ -5,6 +5,7 @@ import { selectContacts } from '../../../redux/contacts/contacts-selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { fetchEditContact } from '../../../redux/contacts/contacts-operations';
+import { toast } from "react-toastify";
 
 const Modal = ({ onClose, currentId }) => {
   const allContacts = useSelector(selectContacts);
@@ -33,14 +34,21 @@ const Modal = ({ onClose, currentId }) => {
       [e.target.name]: e.target.value
     });
   };
-
-  const onSubmitForm = (e, id) => {
+ 
+  
+  const onSubmitForm = (event, id) => {
+    event.preventDefault()
     const contact = {
     name: formData.name,
     number: formData.number
-  };
+    };
+    const { name } = formData;
+    const isExist = allContacts.findIndex(el => el.name.toLocaleLowerCase().trim() === name.toLocaleLowerCase().trim());
+    if (isExist >= 0) {
+      toast.warning(`Contact ${name} is already exists!`);
+      return;
+    }
     dispatch(fetchEditContact({ id: id, contact: contact }));
-    e.preventDefault();
     onClose();
   };
  

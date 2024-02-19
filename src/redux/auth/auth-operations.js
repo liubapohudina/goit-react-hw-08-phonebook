@@ -10,6 +10,10 @@ export const signup = createAsyncThunk(
             toast.success(`${data.user.name} is successfully registered!`)
             return data;
         } catch (error) {
+            if (error.response.data.message === undefined) {
+                toast.error('Such contact already exists!')
+                return rejectWithValue('Such contact already exists!')
+            }
             toast.error(`${error.response.data.message}`)
             return rejectWithValue(error.response.data.message)
         }
@@ -23,7 +27,11 @@ export const login = createAsyncThunk(
             const data = await loginRequest(body);
             return data;
         }
-        catch(error) {
+        catch (error) {
+            if (error.response.data.message === undefined) {
+                toast.error('Such contact already exists!')
+                return rejectWithValue('Such contact already exists!')
+            }
             toast.error(`${error.response.data.message}`)
             return rejectWithValue(error.response.data.message);
         }
