@@ -10,7 +10,8 @@ export const signup = createAsyncThunk(
             toast.success(`${data.user.name} is successfully registered!`)
             return data;
         } catch (error) {
-            if (error.response.data.message === undefined) {
+            console.log(error)
+            if (error.message === 'Request failed with status code 400') {
                 toast.error('Such contact already exists!')
                 return rejectWithValue('Such contact already exists!')
             }
@@ -29,8 +30,8 @@ export const login = createAsyncThunk(
         }
         catch (error) {
             if (error.response.data.message === undefined) {
-                toast.error('Such contact already exists!')
-                return rejectWithValue('Such contact already exists!')
+                toast.error('Invalid email or password!Please try again')
+                return rejectWithValue('Invalid email or password!Please try again')
             }
             toast.error(`${error.response.data.message}`)
             return rejectWithValue(error.response.data.message);
