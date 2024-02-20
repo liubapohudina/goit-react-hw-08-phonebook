@@ -10,7 +10,6 @@ export const signup = createAsyncThunk(
             toast.success(`${data.user.name} is successfully registered!`)
             return data;
         } catch (error) {
-            console.log(error)
             if (error.message === 'Request failed with status code 400') {
                 toast.error('Such contact already exists!')
                 return rejectWithValue('Such contact already exists!')

@@ -22,12 +22,12 @@ const LoginForm = ({ onSubmit }) => {
   const onClickSubmit = (e) => {
     e.preventDefault();
     onSubmit({ ...values });
-    reset();
+    //reset();
   };
 
-  const reset = () => {
-    setValues(INITIAL_STATE);
-  };
+  // const reset = () => {
+  //   setValues(INITIAL_STATE);
+  // };
 
   const emailId = useId();
   const passwordId = useId();
