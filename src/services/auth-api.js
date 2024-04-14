@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const ENDPOINT = {
-    userSign: 'users/signup',
+    userSign: 'users/register',
     userLog: 'users/login',
     userLogOut: 'users/logout',
     userCurrent: 'users/current',
 }
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = process.env.REACT_APP_URL;
 
 const setToken = token => {
     if(token) {

@@ -23,7 +23,7 @@ const RegisterForm = ({ onSubmit }) => {
     
     const onClickSubmit = (e) => {
       e.preventDefault();
-      onSubmit({ ...values });
+      onSubmit(values);
         //reset();
     };
 

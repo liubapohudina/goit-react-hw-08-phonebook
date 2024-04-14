@@ -7,7 +7,7 @@ export const signup = createAsyncThunk(
     async (body, { rejectWithValue }) => {
         try {
             const data  = await signupRequest(body)
-            toast.success(`${data.user.name} is successfully registered!`)
+            toast.success(`${data.user.name} is successfully registered! We send you verify message to your email. Please cklick the link in this message`)
             return data;
         } catch (error) {
             if (error.message === 'Request failed with status code 400') {
