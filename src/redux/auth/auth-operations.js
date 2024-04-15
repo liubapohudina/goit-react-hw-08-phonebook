@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { signupRequest, loginRequest, currentRequest, logoutRequest } from "../../services/auth-api";
+import { signupRequest, loginRequest, currentRequest, logoutRequest, userverifyMail } from "../../services/auth-api";
 import { toast } from "react-toastify";
 
 export const signup = createAsyncThunk(
@@ -7,7 +7,7 @@ export const signup = createAsyncThunk(
     async (body, { rejectWithValue }) => {
         try {
             const data  = await signupRequest(body)
-            toast.success(`${data.user.name} is successfully registered! We send you verify message to your email. Please cklick the link in this message`)
+            toast.success(`${data.user.name} is successfully registered! We send you verify message to your email. Please click the link in this message`)
             return data;
         } catch (error) {
             if (error.message === 'Request failed with status code 400') {
@@ -16,6 +16,19 @@ export const signup = createAsyncThunk(
             }
             toast.error(`${error.response.data.message}`)
             return rejectWithValue(error.response.data.message)
+        }
+    }
+)
+
+export const verify = createAsyncThunk(
+    "auth/verify",
+    async (verificationToken, { rejectWithValue }) => {
+        try {
+            const data = await userverifyMail(verificationToken);
+            return data;
+        } catch (error) {
+            toast.error(`${error.response.data.message}`)
+            return rejectWithValue(error.response.data.message);
         }
     }
 )

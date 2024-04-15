@@ -10,6 +10,7 @@ const PhonebookList = lazy(() => import('../Pages/PhonebookList/PhonebookList'))
 const NotFoundPage = lazy(() => import('../Pages/NotFoundPage/NotfoundPage'));
 const RegisterFormPage = lazy(() => import('../Pages/RegisterFormPage/RegisterFormPage'));
 const LoginFormPage = lazy(() => import('../Pages/LoginFormPage/LoginFormPage'));
+const VerifyMail = lazy(() => import('../Pages/VerifyMail/VerifyMail'));
 
 
 export function AppRoutes({ isAuthenticated }) {
@@ -21,6 +22,7 @@ export function AppRoutes({ isAuthenticated }) {
                     <Route element={<PublicRoutes />}>
                         <Route path="register" element={<RegisterFormPage />} />
                         <Route path="login" element={<LoginFormPage />} />
+                        <Route path="verify/:verifyToken" element={<VerifyMail/>} />
                     </Route>
                     <Route element={<PrivateRoutes />}>
                         <Route path="contacts" element={<PhonebookList />} />

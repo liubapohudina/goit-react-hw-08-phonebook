@@ -6,7 +6,7 @@ import { logout } from '../../redux/auth/auth-operations';
 
 
 const UserMenu = () => {
-    const { email } = useSelector(userInfo);
+    const { name } = useSelector(userInfo);
 
     const dispatch = useDispatch();
     const onClickLogOut = () => dispatch(logout());
@@ -14,7 +14,7 @@ const UserMenu = () => {
 
     return (
             <div className={styles.boxUser}>
-            <p>{email}</p> 
+            <p>{name}</p> 
             <Button onClickLogout={onClickLogOut} className={styles.btnLogOut} text="Log out"  type='button'/>
         </div>
     )

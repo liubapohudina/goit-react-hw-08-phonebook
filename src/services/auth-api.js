@@ -3,6 +3,7 @@ import axios from "axios";
 const ENDPOINT = {
     userSign: 'users/register',
     userLog: 'users/login',
+    userVerify: 'users/verify/',
     userLogOut: 'users/logout',
     userCurrent: 'users/current',
 }
@@ -16,11 +17,20 @@ const setToken = token => {
     axios.defaults.headers.authorization = "";
 }
 
+  
 export const signupRequest = async body => {
     const { data } = await axios.post(`${ENDPOINT.userSign}`, body);
-    setToken(data.token);
     return data;
 } 
+
+export const userverifyMail = async verificationToken => {
+     try {
+         const { data } = await axios.get(`${ENDPOINT.userVerify}${verificationToken}`);
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
 
 export const loginRequest = async body => {
     const { data } = await axios.post(`${ENDPOINT.userLog}`, body);

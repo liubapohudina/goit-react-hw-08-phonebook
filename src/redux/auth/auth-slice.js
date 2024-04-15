@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, signup, current, logout } from "./auth-operations";
+import { login, signup, current, logout, verify } from "./auth-operations";
 
 const initialState = {
     user: {},
     token: "",
+    isVerifyMailSendMessage: 'message not send',
     isLogin: false,
     loading: false,
     error: null,
@@ -12,9 +13,11 @@ const initialState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    extraReducers: builder => {
+    extraReducers: (builder) => {
         builder
-            .addCase(signup.pending, (state) => { state.loading = true })
+            .addCase(signup.pending, (state) => {
+                state.loading = true;
+            })
             .addCase(signup.fulfilled, (state, { payload }) => {
                 state.user = payload.user;
                 state.token = payload.token;
@@ -26,7 +29,20 @@ const authSlice = createSlice({
                 state.error = payload;
                 state.isLogin = false;
             })
-            .addCase(login.pending, (state) => { state.loading = true })
+            .addCase(verify.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(verify.fulfilled, (state, { payload }) => {
+                state.isVerifyMailSendMessage = payload.message;
+                state.loading = false;
+            })
+            .addCase(verify.rejected, (state, { payload }) => {
+                state.error = payload;
+                state.loading = false;
+            })
+            .addCase(login.pending, (state) => {
+                state.loading = true;
+            })
             .addCase(login.fulfilled, (state, { payload }) => {
                 state.loading = false;
                 state.isLogin = true;
@@ -35,14 +51,13 @@ const authSlice = createSlice({
                 state.token = payload.token;
             })
             .addCase(login.rejected, (state, { error }) => {
-                return {
-                    ...state,
-                    error: error.message,
-                    isLogin: false,
-                    loading: false,
-                };
+                state.error = error.message;
+                state.isLogin = false;
+                state.loading = false;
             })
-            .addCase(current.pending, (state) => { state.loading = true })
+            .addCase(current.pending, (state) => {
+                state.loading = true;
+            })
             .addCase(current.fulfilled, (state, { payload }) => {
                 state.loading = false;
                 state.isLogin = true;
@@ -53,7 +68,9 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.token = '';
             })
-            .addCase(logout.pending, (state) => { state.loading = true })
+            .addCase(logout.pending, (state) => {
+                state.loading = true;
+            })
             .addCase(logout.fulfilled, (state) => {
                 state.loading = false;
                 state.isLogin = false;
@@ -61,13 +78,16 @@ const authSlice = createSlice({
                 state.user = {};
                 state.token = '';
             })
-            .addCase(logout.rejected, (state, {payload}) => {
+            .addCase(logout.rejected, (state, { payload }) => {
                 state.loading = false;
                 state.error = payload;
                 state.isLogin = false;
-            })
-    }
+            });
+    },
 });
 
 export default authSlice.reducer;
+
+
+
 

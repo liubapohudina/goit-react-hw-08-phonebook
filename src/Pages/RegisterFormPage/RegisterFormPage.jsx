@@ -3,7 +3,7 @@ import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { Loader } from "../../components/Form/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/auth/auth-operations";
-import { loading } from "../../redux/auth/auth-selectors";
+import { loading, isVerifyMailSendMessage } from "../../redux/auth/auth-selectors";
 
 const RegisterFormPage = () => {
 
@@ -14,13 +14,13 @@ const RegisterFormPage = () => {
     }
     
     const isLoading = useSelector(loading);
+    const verifyMailSend = useSelector(isVerifyMailSendMessage);
 
     return (
         <main className="container">
-            <Title title="Please Sign Up">
-                <RegisterForm onSubmit={onSubmit} />
                 {isLoading && <Loader />}
-            </Title>    
+                {verifyMailSend === 'Verification successful' ? <Title title="Check your e-mail"></Title> : <> <Title title="Please Sign Up">
+                <RegisterForm onSubmit={onSubmit} /> </Title></>}
         </main>
     )
 }
