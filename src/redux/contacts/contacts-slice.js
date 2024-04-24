@@ -56,7 +56,7 @@ const contactsSlice = createSlice({
             .addCase(fetchContacts.pending, (state) => { state.isLoading = true })
             .addCase(fetchContacts.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
-                state.items = [...payload];
+                state.items = [...payload.allContacts];
             })
             .addCase(fetchContacts.rejected, (state, { payload }) => {
              state.isLoading = false;
@@ -75,9 +75,10 @@ const contactsSlice = createSlice({
             })
             /*---------------FOR DELETE CONTACTS----------------*/
             .addCase(fetchDeleteContacts.pending, (state) => { state.isLoading = true })
-            .addCase(fetchDeleteContacts.fulfilled,  (state, { payload }) => {
+            .addCase(fetchDeleteContacts.fulfilled, (state, { payload }) => {
+                console.log(payload)
             state.isLoading = false;
-            state.items = state.items.filter(item => item.id !== payload.id);
+            state.items = state.items.filter(item => item._id !== payload._id);
             })
             .addCase(fetchDeleteContacts.rejected, (state, { payload }) => {
              state.isLoading = false;
@@ -86,10 +87,10 @@ const contactsSlice = createSlice({
             /*----------------FOR EDIT CONTACT-------------------------*/
             .addCase(fetchEditContact.pending, (state) => { state.isLoading = true })
             .addCase(fetchEditContact.fulfilled, (state, { payload }) => {
-            const index = state.items.findIndex(contact => contact.id === payload.id);
+            const index = state.items.findIndex(contact => contact._id === payload._id);
                 if (index !== -1) {
             state.items[index] = payload; 
-            }
+                }
             state.isLoading = false;
             state.error = null;
             })

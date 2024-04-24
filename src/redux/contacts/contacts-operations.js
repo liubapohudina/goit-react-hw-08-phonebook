@@ -34,9 +34,9 @@ export const fetchAddContacts = createAsyncThunk(
 
 export const fetchDeleteContacts = createAsyncThunk(
     'contacts/delete',
-    async (id, thunkApi) => {
+    async (_id, thunkApi) => {
         try {
-            const data = await contactsApi.requestDeleteContact(id);
+            const data = await contactsApi.requestDeleteContact(_id);
             toast.info(`The contact ${data.name} was deleted!`);
             return data;
             

@@ -50,7 +50,7 @@ const Form = () => {
             <input className={styles.input} onChange={onChangeInput} type="text" name="name" id="username"  required placeholder="Please, enter data of contact" />
             
             <label htmlFor="tel">Phone number </label>
-            <input className={styles.input} onChange={onChangeInput} type="tel" name="number" id="tel" required placeholder="Please, enter a phone number"/>
+            <input className={styles.input} onChange={onChangeInput} type="tel" name="phone" id="tel" required placeholder="Please, enter a phone number"/>
            
             <Button type="submit" text="Add contact"  />
         </form>

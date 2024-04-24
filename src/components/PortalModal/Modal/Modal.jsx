@@ -9,12 +9,12 @@ import { toast } from "react-toastify";
 
 const Modal = ({ onClose, currentId }) => {
   const allContacts = useSelector(selectContacts);
-  const selectItem = allContacts.find(item => item.id === currentId);
+  const selectItem = allContacts.find(item => item._id === currentId);
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     name: '',
-    number: '',
+    phone: '',
     id: '',
   });
 
@@ -22,8 +22,8 @@ const Modal = ({ onClose, currentId }) => {
     if (selectItem) {
       setFormData({
         name: selectItem.name,
-        number: selectItem.number,
-        id: selectItem.id,
+        phone: selectItem.phone,
+        id: selectItem._id,
       });
     }
   }, [selectItem]);
@@ -40,7 +40,7 @@ const Modal = ({ onClose, currentId }) => {
     event.preventDefault()
     const contact = {
     name: formData.name,
-    number: formData.number
+    phone: formData.phone
     };
     const { name } = formData;
     const isExist = allContacts.findIndex(el => el.name.toLocaleLowerCase().trim() === name.toLocaleLowerCase().trim());
@@ -72,7 +72,7 @@ const handleKeyDown = (e) => {
           <input className={styles.input} onChange={onChangeInput} value={formData.name} type="text" name="name" id="username" required />
         
           <label htmlFor="tel">Phone number </label>
-          <input className={styles.input} onChange={onChangeInput} value={formData.number} type="tel" name="number" id="tel" required />
+          <input className={styles.input} onChange={onChangeInput} value={formData.phone} type="tel" name="phone" id="tel" required />
        
           <Button type="submit" text="Edit contact" />
         </form>

@@ -6,7 +6,7 @@ import axios from "axios";
 // const contactsInstance = axios.create({
 //     baseURL: `https://${API_KEY}.mockapi.io/api`
 // })
-//axios.defaults.baseURL = `https://${API_KEY}.mockapi.io/api`;
+axios.defaults.baseURL = process.env.REACT_APP_URL;
 
 
 
@@ -27,8 +27,8 @@ export const requestDeleteContact = async id => {
     return data;
 }
 
-export const requestEditContact = async (id, contact ) => {
-    const { data } = await axios.patch(`${ENDPOINT}/${id}`, contact);
+export const requestEditContact = async (id, contact) => {
+    const { data } = await axios.put(`${ENDPOINT}/${id}`, contact);
     return data;
 }
 

@@ -15,7 +15,7 @@ const ContactList = () => {
   const { items, isLoading } = useSelector(selectFilterContacts);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
- 
+
   
   const filteredContacts = useSelector(selectFilterContacts);
 
@@ -39,21 +39,21 @@ const ContactList = () => {
  
 const elements = items ? (
     items.map(item => (
-      <li className={styles.itemContacts} key={item.id}>
-        <p className={styles.contactInfo}>{item.name} <a className={styles.link} href={`tel:${item.number}`}>{item.number}</a></p>
+      <li className={styles.itemContacts} key={item._id}>
+        <p className={styles.contactInfo}>{item.name} <a className={styles.link} href={`tel:${item.phone}`}>{item.phone}</a></p>
         <div className={styles.btns}>
-          <button id={item.id} className={styles.btn} onClick={() => onClickDelete(item.id)} type="button">Delete</button>
-          <button id={item.id} className={styles.btn} onClick={() => openModal(item.id)} type="button">Edit</button>
+          <button id={item._id} className={styles.btn} onClick={() => onClickDelete(item._id)} type="button">Delete</button>
+          <button id={item._id} className={styles.btn} onClick={() => openModal(item._id)} type="button">Edit</button>
         </div> 
   </li>
     ))
 ) : (
     filteredContacts.map(item => (
-        <li className={styles.itemContacts} key={item.id}>
-        <p className={styles.contactInfo}>{item.name}  {item.number}</p>
+        <li className={styles.itemContacts} key={item._id}>
+        <p className={styles.contactInfo}>{item.name}  {item.phone}</p>
         <div className={styles.btns}>
-          <button id={item.id} className={styles.btn} onClick={() => onClickDelete(item.id)} type="button">Delete</button>
-          <button id={item.id} className={styles.btn} onClick={() => openModal(item.id)} type="button">Edit</button>
+          <button id={item._id} className={styles.btn} onClick={() => onClickDelete(item._id)} type="button">Delete</button>
+          <button id={item._id} className={styles.btn} onClick={() => openModal(item._id)} type="button">Edit</button>
         </div>  
         </li>
     ))
